@@ -22,8 +22,20 @@ Clusters:
 
 Cluster Directory:
 * ```roles``` - directory similar to the main roles directory, but can contain roles local to the cluster. ```roles``` directory simply defines what are possible roles; a role is not actually used until a host references it.
+* ```config``` - configuration for the cluster. See also cluster config.
 * ```hosts``` - directory containing a sub-directory per host in the cluster.
 * ```hosts/<host>``` - the host sub-directory declares which roles are actually used by the host, they are *.sh shell scripts similar to init.d services. The scripts can either add new functionality or call into the other roles, such as by calling a script in the ```roles``` directory. The scripts are run in alphabetical order, so a numbering scheme can be used when order is important, such as #0010-apt-update.sh and #0020-docker-debian-7.sh. A host's sub-directory can also contain further sub-directories if any additional data or configs are needed during deployment.
+
+Builtin Roles:
+* TBD - see the roles directory and check out the script source.
+
+Roles API:
+* ```$BASE_DIR``` - base directory of cluster-deploy deployed to a host.
+* ```$HOST_DIR``` - directory containing this host's roles deployed to a host, it's the same as ```hosts/<host>``` from the cluster directory.
+* ```$CLUSTER_CONFIG_DIR``` - the cluster config directory deployed to a host, it's the same as ```config``` from the cluster directory.
+* ```$LOCAL_DATA_DIR``` - local data for use on a deployed host. For scratch data, install temp files, working area, etc. This data will die with the host, so anything permanent needs to be saved elsewhere.
+* ```get-role-dir <role>``` - function to get a role directory by its name, since there are two different roles directories (builtin and cluster specific).
+* ```###clusterconfig###<key>=<value>``` - a script which prints this notation can set a cluster config variable during deployment. It will propagate back to the caller and write a file under the cluster's ```config``` directory. From there the config can then be deployed to other hosts.
 
 Example:
 ```

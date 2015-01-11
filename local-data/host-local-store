@@ -1,0 +1,5 @@
+
+Local transient data only!
+
+Anything on a host that should be presisted should be entirely outside of this repo.
+In the case the host should persist data, it should be in host-specific directories.

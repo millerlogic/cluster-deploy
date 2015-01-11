@@ -25,6 +25,7 @@ Clusters:
 Cluster Directory:
 * ```roles``` - directory similar to the main roles directory, but can contain roles local to the cluster. ```roles``` directory simply defines what are possible roles; a role is not actually used until a host references it.
 * ```config``` - configuration for the cluster. See also cluster config.
+* ```config/hosts``` - hosts file which can contain lines with ```<ip-addr> <hostname>```, it lets you keep your hostname definitions in your cluster repo rather than depending on the actual hosts file. If you use the hosts role as well, you can get these hosts deployed to the cluster's actual /etc/hosts files.
 * ```hosts``` - directory containing a sub-directory per host in the cluster.
 * ```hosts/<host>``` - the host sub-directory declares which roles are actually used by the host, they are *.sh shell scripts similar to init.d services. The scripts can either add new functionality or call into the other roles, such as by calling a script in the ```roles``` directory. The scripts are run in alphabetical order, so a numbering scheme can be used when order is important, such as #0010-apt-update.sh and #0020-docker-debian-7.sh. A host's sub-directory can also contain further sub-directories if any additional data or configs are needed during deployment.
 

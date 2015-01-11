@@ -1,5 +1,7 @@
 # cluster-deploy
-Cluster deployment for roles, scripts and other configuration
+Cluster deployment for roles, scripts and other configuration.
+
+A collection of shell scripts in a familiar init.d style control mechanism with deployment, installation and configuration faclilities for clusters.
 
 Main concepts:
 * ```Host``` - one node in a cluster.

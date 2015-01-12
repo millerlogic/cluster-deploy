@@ -16,7 +16,7 @@ Scripts:
 * ```install-host.sh``` - this is run automatically by deploy-remote-host.sh on the remote host.
 * ```load-vars-remote-host.sh``` - used by the other scripts to derive and source variables.
 * ```main-service.sh <action> [<role>]``` ... - the main cluster-deploy /etc/init.d service deployed on hosts.
-* ```service-remote-host.sh <action> [<role>]``` ... - a way to control the service (main-service.sh) on a remote host.
+* ```service-remote-host.sh <host> <action> [<role>]``` ... - a way to control the service (main-service.sh) on a remote host.
 
 Clusters:
 * ```clusters-example.conf``` - example file pointing to cluster directories.

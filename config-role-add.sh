@@ -106,6 +106,7 @@ else
 fi
 
 echo '#!/bin/bash
-$(get-role-dir '"$rolename"')/'"$(basename $servicefile)"' "$1" '"$serviceargs" >$filepath
+$(get_role_dir '"$rolename"')/'"$(basename $servicefile)"' "$1" '"$serviceargs" >$filepath
+chmod +x $filepath
 
 echo "Role added for $1 to file: $filepath"

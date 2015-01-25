@@ -86,7 +86,7 @@ Roles API:
 * ```$HOST_DIR``` - directory containing this host's roles deployed to a host, it's the same as ```hosts/<host>``` from the cluster directory.
 * ```$CLUSTER_CONFIG_DIR``` - the cluster config directory deployed to a host, it's the same as ```config``` from the cluster directory.
 * ```$LOCAL_DATA_DIR``` - local data for use on a deployed host. For scratch data, install temp files, working area, etc. This data will die with the host, so anything permanent needs to be saved elsewhere.
-* ```get-role-dir <role>``` - function to get a role directory by its name, since there are two different roles directories (builtin and cluster specific).
+* ```get_role_dir <role>``` - function to get a role directory by its name, since there are two different roles directories (builtin and cluster specific).
 * ```###clusterconfig###<key>=<value>``` - a script which prints this notation can set a cluster config variable during deployment. It will propagate back to the caller and write a file under the cluster's ```config``` directory. From there the config can then be deployed to other hosts.
 
 Example directory structure:

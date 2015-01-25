@@ -25,7 +25,7 @@ export CONTAINER_SCOPE=persist-deploy
 
 export LOGFILE=/var/log/cluster-deploy/main-service-`date +%Y%m%d`.log
 
-function get-role-dir
+function get_role_dir
 {
 	rolename="$1"
 	if [ x"$rolename" != "x" ]; then
@@ -39,6 +39,7 @@ function get-role-dir
 	fi
 	return 1
 }
+export -f get_role_dir
 
 if [ ! -d $HOST_DIR ]; then
 	echo "This host dir cannot be found, $HOST_DIR" >&2

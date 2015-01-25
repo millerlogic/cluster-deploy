@@ -18,7 +18,7 @@ ssh -i ~/.ssh/id_rsa_cluster -o PasswordAuthentication=no -q deploy@$REMOTE_HOST
 ssh -t $REMOTE '
 	sudo -i /bin/bash -c "
 		groupadd -g 28100 deploy || echo;
-		useradd --create-home -u 28100 -N -g 28100 deploy || echo;
+		useradd -s /bin/bash --create-home -u 28100 -N -g 28100 deploy || echo;
 		sudo -u deploy mkdir -p ~deploy/.ssh;
 		echo \"'"$id_rsa_cluster_pub"'\" > ~deploy/.ssh/authorized_keys;
 		chown deploy:deploy ~deploy/.ssh/authorized_keys;

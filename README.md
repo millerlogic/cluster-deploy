@@ -22,6 +22,51 @@ Scripts:
 * ```load-vars-remote-host.sh``` - used by the other scripts to derive and source variables.
 * ```main-service.sh <action> [<role>]``` ... - the main cluster-deploy /etc/init.d service deployed on hosts.
 
+Example cluster, host and roles setup:
+<pre>
+<strong>$ ./config-cluster-add.sh</strong>
+Please enter a name for the new cluster:
+mycluster
+Cluster setup, use config-cluster-host-add.sh to add hosts.
+
+<strong>$ ./config-cluster-host-add.sh</strong>
+Enter the name of the cluster to add to:
+mycluster
+Enter the name of the host:
+myhost001
+If you want to enter an IP address for this host please do so, otherwise press enter:
+10.1.1.18
+Host myhost001 added to cluster mycluster, use config-role-add.sh to add roles
+
+<strong>$ ./config-role-add.sh myhost001 10</strong>
+Enter the name of the role to add:
+apt-update
+Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0010-apt-update.sh
+
+<strong>$ ./config-role-add.sh myhost001 20</strong>
+Enter the name of the role to add:
+docker-debian-7
+Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0020-docker-debian-7.sh
+
+<strong>$ ./config-role-add.sh myhost001 200</strong>
+Enter the name of the role to add:
+mariadb
+
+Role mariadb
+Role usage: <config-dir> <set-password>
+Details: Create mariadb (mysql) database.
+
+Please enter your parameters for this role's service:
+"$HOST_DIR/mariadb-data" mypassword
+Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0200-mariadb.sh
+
+<strong>$ mkdir ../mycluster-deploy/hosts/myhost001/mariadb-data</strong>
+<strong>$ cp ~/saved_mysql_configs/my.cnf ../mycluster-deploy/hosts/myhost001/mariadb-data</strong>
+
+<strong>$ ./deploy-remote-host.sh myhost001</strong>
+...
+</pre>
+
 Clusters:
 * ```clusters-example.conf``` - example file pointing to cluster directories.
 * ```clusters.conf``` - actual file pointing to your cluster directories.
@@ -44,7 +89,7 @@ Roles API:
 * ```get-role-dir <role>``` - function to get a role directory by its name, since there are two different roles directories (builtin and cluster specific).
 * ```###clusterconfig###<key>=<value>``` - a script which prints this notation can set a cluster config variable during deployment. It will propagate back to the caller and write a file under the cluster's ```config``` directory. From there the config can then be deployed to other hosts.
 
-Example:
+Example directory structure:
 ```
 $ cd /home/wolf
 $ mkdir wolf-cluster

@@ -12,11 +12,15 @@ Main concepts:
 * ```Service``` - init.d style service, responds to start, stop, as well as install.
 
 Scripts:
+* ```config-cluster-add.sh``` - interactively initialize a new cluster config.
+* ```config-cluster-host-add.sh``` - interactively add a new host to a cluster's config.
+* ```config-role-add.sh <host>``` - interactively setup a role for a host; afterwards you can deploy.
 * ```deploy-remote-host.sh [<user>@]<host>``` - sends the cluster files and role information to a host and installs.
+* ```service-remote-host.sh <host> <action> [<role>]``` ... - a way to control the service (main-service.sh) on a remote host.
+* ```ssh-remote-host.sh <ssh-args>``` ... - helper script to ssh into a host or create a tunnel.
 * ```install-host.sh``` - this is run automatically by deploy-remote-host.sh on the remote host.
 * ```load-vars-remote-host.sh``` - used by the other scripts to derive and source variables.
 * ```main-service.sh <action> [<role>]``` ... - the main cluster-deploy /etc/init.d service deployed on hosts.
-* ```service-remote-host.sh <host> <action> [<role>]``` ... - a way to control the service (main-service.sh) on a remote host.
 
 Clusters:
 * ```clusters-example.conf``` - example file pointing to cluster directories.

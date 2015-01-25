@@ -4,7 +4,7 @@
 # Usage: <host> <action> [...]
 # such as myhost01 start app.sh
 
-SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
+SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 cd $SDIR
 

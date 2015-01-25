@@ -14,7 +14,7 @@ if [ x"$ORIG_REMOTE" == "x" ]; then
 	exit
 fi
 
-SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
+SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 cd $SDIR
 

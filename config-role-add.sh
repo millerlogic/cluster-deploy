@@ -3,7 +3,7 @@
 # Usage: <host> [<role-priority>]
 # <role-priority> is optional, can be a number from 1 to 9999 for an explicit role start order.
 
-SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
+SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 cd $SDIR
 

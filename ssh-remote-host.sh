@@ -3,7 +3,7 @@
 # ssh to the remote host as the deploy user.
 # any arguments given are passed directly to ssh.
 
-SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
+SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 cd $SDIR
 

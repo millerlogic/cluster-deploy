@@ -2,7 +2,7 @@
 
 # Call with a hostname; will connect, setup the repo and call install-host.sh on it.
 
-SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
+SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 cd $SDIR
 

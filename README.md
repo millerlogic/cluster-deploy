@@ -26,38 +26,38 @@ Example cluster, host and roles setup:
 <pre>
 <strong>$ ./config-cluster-add.sh</strong>
 Please enter a name for the new cluster:
-mycluster
+<strong>mycluster</strong>
 Cluster setup, use config-cluster-host-add.sh to add hosts.
 
 <strong>$ ./config-cluster-host-add.sh</strong>
 Enter the name of the cluster to add to:
-mycluster
+<strong>mycluster</strong>
 Enter the name of the host:
-myhost001
+<strong>myhost001</strong>
 If you want to enter an IP address for this host please do so, otherwise press enter:
-10.1.1.18
+<strong>10.1.1.18</strong>
 Host myhost001 added to cluster mycluster, use config-role-add.sh to add roles
 
 <strong>$ ./config-role-add.sh myhost001 10</strong>
 Enter the name of the role to add:
-apt-update
+<strong>apt-update</strong>
 Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0010-apt-update.sh
 
 <strong>$ ./config-role-add.sh myhost001 20</strong>
 Enter the name of the role to add:
-docker-debian-7
+<strong>docker-debian-7</strong>
 Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0020-docker-debian-7.sh
 
 <strong>$ ./config-role-add.sh myhost001 200</strong>
 Enter the name of the role to add:
-mariadb
+<strong>mariadb</strong>
 
 Role mariadb
-Role usage: <config-dir> <set-password>
+Role usage: &lt;config-dir&gt; &lt;set-password&gt;
 Details: Create mariadb (mysql) database.
 
 Please enter your parameters for this role's service:
-"$HOST_DIR/mariadb-data" mypassword
+<strong>"$HOST_DIR/mariadb-data" mypassword</strong>
 Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0200-mariadb.sh
 
 <strong>$ mkdir ../mycluster-deploy/hosts/myhost001/mariadb-data</strong>

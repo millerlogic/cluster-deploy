@@ -14,7 +14,7 @@ Main concepts:
 Scripts:
 * ```config-cluster-add.sh``` - interactively initialize a new cluster config.
 * ```config-cluster-host-add.sh``` - interactively add a new host to a cluster's config.
-* ```config-role-add.sh <host>``` - interactively setup a role for a host; afterwards you can deploy.
+* ```config-role-add.sh <host> [<order>]``` - interactively setup a role for a host; afterwards you can deploy.
 * ```deploy-remote-host.sh [<user>@]<host>``` - sends the cluster files and role information to a host and installs.
 * ```service-remote-host.sh <host> <action> [<role>]``` ... - a way to control the service (main-service.sh) on a remote host.
 * ```ssh-remote-host.sh <ssh-args>``` ... - helper script to ssh into a host or create a tunnel.

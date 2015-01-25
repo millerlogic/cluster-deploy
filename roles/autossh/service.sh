@@ -19,7 +19,7 @@ if [ x"$1" == x"install" ]; then
 	
 	# Copy in the autossh pubkeys from the cluster config.
 	mkdir -p ~autossh/.ssh
-	cat $CLUSTER_CONFIG_DIR/*-autossh.key.conf |
+	cat $CLUSTER_CONFIG_DIR/*-autossh.key.conf 2>/dev/null |
 		while read line; do
 			echo "command=\"/bin/false\",no-agent-forwarding,no-pty,no-X11-forwarding $line"
 		done >~autossh/.ssh/authorized_keys

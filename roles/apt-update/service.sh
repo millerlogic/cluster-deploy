@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: auto # Ensures apt is updated and upgraded on the host.
 
 SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
 

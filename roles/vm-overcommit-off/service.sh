@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: auto # Max memory commit set to RAM + Swap. Consider enabling swap first!
 
 # Note: only use this if you're sure you don't want to use the oom-killer.
 # Some programs DEPEND on overcommit, such as Java. In such cases, do not use this role.

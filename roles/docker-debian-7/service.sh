@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: auto # Role which allows using docker.
 
 SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
 

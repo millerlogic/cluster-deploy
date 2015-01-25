@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: auto # Ensure ssh setup on the remote host.
 
 SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
 

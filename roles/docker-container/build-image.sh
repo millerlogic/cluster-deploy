@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Helper script to build an image that's not in the registry.
+# You can call this from your role's install and start actions.
 
 imgname="$1" # Name to give the built image, this is simply passed to --tag
 path="$2" # Path or URL to the Dockerfile

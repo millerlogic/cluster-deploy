@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: auto # The main tunneling service needed on both sides of a potential tunnel.
 
 # This service lets you use autossh tunnels, you need to use this role on both sides.
 # Then use tunnel-service.sh to add the actual tunnels.

@@ -1,6 +1,6 @@
 #!/bin/bash
+#ROLE_USAGE: auto | [<email>] # Runs munin node and munin master on the host.
 
-# Run munin node and munin master.
 # If you don't want the master on the same machine, don't use this role.
 
 # Put your e-mail address as the 2nd parameter and we'll setup some notifications.

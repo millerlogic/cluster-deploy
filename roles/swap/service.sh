@@ -1,6 +1,6 @@
 #!/bin/bash
+#ROLE_USAGE: auto # This will turn on swap with the amount of memory you have.
 
-# This will turn on swap with exactly the amount of memory you have.
 # If swap is already on, it will add enough swap to match your memory.
 
 SWAPFILE_DIR=$BASE_DIR/local-data/swap

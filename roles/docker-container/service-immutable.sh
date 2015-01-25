@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: <container-name> <image-name> [<extra-docker-start-args>]
 
 # Use this service controller if you want an immutable container with no important internal state.
 # This is usually the preferred method so that containers are destroyed and never relied upon.

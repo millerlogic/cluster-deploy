@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: <container-name> <image-name> [<extra-docker-start-args>]
 
 # Use this service controller if you need to preserve the contents of a container.
 # Usually it's preferred to use immutable so that containers are destroyed and never relied upon.

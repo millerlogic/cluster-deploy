@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: <config-dir> <set-password> # Create mariadb (mysql) database.
 
 action="$1"
 CONFIG_DIR="$2"

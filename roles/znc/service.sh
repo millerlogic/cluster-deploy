@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: <state-dir> [<host-port>] # Run znc in a container.
 
 STATE_DIR="$2"
 PORT="$3"
@@ -29,3 +30,5 @@ if [ x"$1" == x"install" ]; then
 fi
 
 $BASE_DIR/roles/docker-container/service-immutable.sh "$1" "$cname" "$imgname" -v "$STATE_DIR:/znc-state" -p "$PORT:16660"
+
+echo "znc is on port $PORT"

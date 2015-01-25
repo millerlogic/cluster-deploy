@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: auto | [<extra-docker-start-args>] # Test container; useful args include --link ...
 
 # Gives you a testbed contanier for testing new potential roles.
 # Warning: if you use docker in the testbed container, it accesses the host's docker!

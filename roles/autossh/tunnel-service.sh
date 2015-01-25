@@ -1,4 +1,5 @@
 #!/bin/bash
+#ROLE_USAGE: <tunnel> <container-name> [<extra-docker-start-args>] # Creates a tunnel.
 
 action="$1"
 tunnel="$2" # like: -L 3333:localhost:4444 -L 4444:localhost:5555 autossh@host1

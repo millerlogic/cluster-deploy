@@ -1,6 +1,5 @@
 #!/bin/bash
-
-# Adds your cluster's config/hosts file to the /etc/hosts file.
+#ROLE_USAGE: auto # Adds your cluster's config/hosts file to the remote /etc/hosts file.
 
 SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
 

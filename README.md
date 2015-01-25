@@ -12,11 +12,60 @@ Main concepts:
 * ```Service``` - init.d style service, responds to start, stop, as well as install.
 
 Scripts:
+* ```config-cluster-add.sh``` - interactively initialize a new cluster config.
+* ```config-cluster-host-add.sh``` - interactively add a new host to a cluster's config.
+* ```config-role-add.sh <host> [<order>]``` - interactively setup a role for a host; afterwards you can deploy.
 * ```deploy-remote-host.sh [<user>@]<host>``` - sends the cluster files and role information to a host and installs.
+* ```service-remote-host.sh <host> <action> [<role>]``` ... - a way to control the service (main-service.sh) on a remote host.
+* ```ssh-remote-host.sh <ssh-args>``` ... - helper script to ssh into a host or create a tunnel.
 * ```install-host.sh``` - this is run automatically by deploy-remote-host.sh on the remote host.
 * ```load-vars-remote-host.sh``` - used by the other scripts to derive and source variables.
 * ```main-service.sh <action> [<role>]``` ... - the main cluster-deploy /etc/init.d service deployed on hosts.
-* ```service-remote-host.sh <host> <action> [<role>]``` ... - a way to control the service (main-service.sh) on a remote host.
+
+Example cluster, host and roles setup:
+<pre>
+<strong>$ ./config-cluster-add.sh</strong>
+Please enter a name for the new cluster:
+<strong>mycluster</strong>
+Cluster setup, use config-cluster-host-add.sh to add hosts.
+
+<strong>$ ./config-cluster-host-add.sh</strong>
+Enter the name of the cluster to add to:
+<strong>mycluster</strong>
+Enter the name of the host:
+<strong>myhost001</strong>
+If you want to enter an IP address for this host please do so, otherwise press enter:
+<strong>10.1.1.18</strong>
+Host myhost001 added to cluster mycluster, use config-role-add.sh to add roles
+
+<strong>$ ./config-role-add.sh myhost001 10</strong>
+Enter the name of the role to add:
+<strong>apt-update</strong>
+Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0010-apt-update.sh
+
+<strong>$ ./config-role-add.sh myhost001 20</strong>
+Enter the name of the role to add:
+<strong>docker-debian-7</strong>
+Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0020-docker-debian-7.sh
+
+<strong>$ ./config-role-add.sh myhost001 200</strong>
+Enter the name of the role to add:
+<strong>mariadb</strong>
+
+Role mariadb
+Role usage: &lt;config-dir&gt; &lt;set-password&gt;
+Details: Create mariadb (mysql) database.
+
+Please enter your parameters for this role's service:
+<strong>"$HOST_DIR/mariadb-data" mypassword</strong>
+Role added for myhost001 to file: ../mycluster-deploy/hosts/myhost001/#0200-mariadb.sh
+
+<strong>$ mkdir ../mycluster-deploy/hosts/myhost001/mariadb-data</strong>
+<strong>$ cp ~/saved_mysql_configs/my.cnf ../mycluster-deploy/hosts/myhost001/mariadb-data</strong>
+
+<strong>$ ./deploy-remote-host.sh myhost001</strong>
+...
+</pre>
 
 Clusters:
 * ```clusters-example.conf``` - example file pointing to cluster directories.
@@ -40,7 +89,7 @@ Roles API:
 * ```get-role-dir <role>``` - function to get a role directory by its name, since there are two different roles directories (builtin and cluster specific).
 * ```###clusterconfig###<key>=<value>``` - a script which prints this notation can set a cluster config variable during deployment. It will propagate back to the caller and write a file under the cluster's ```config``` directory. From there the config can then be deployed to other hosts.
 
-Example:
+Example directory structure:
 ```
 $ cd /home/wolf
 $ mkdir wolf-cluster

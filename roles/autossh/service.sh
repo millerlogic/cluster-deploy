@@ -10,7 +10,7 @@ if [ x"$1" == x"install" ]; then
 	
 	adduser -u 28105 --system --group --shell /bin/false \
 		--home /var/lib/autossh --disabled-password autossh || echo
-	sudo -u autossh /bin/sh -c '
+	sudo -H -u autossh /bin/sh -c '
 		if [ ! -f ~/.ssh/id_rsa.pub ]; then
 			ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 		fi

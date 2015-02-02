@@ -1,8 +1,9 @@
 #!/bin/bash
-#ROLE_USAGE: auto # Role which allows using docker.
+#ROLE_USAGE: auto | [<default-docker-opts>] # Role which allows using docker.
 
 SDIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
 
 if [ x"$1" == x"install" ] || [ x"$1" == x"start" ]; then
-	exec $SDIR/install.sh
+	shift;
+	exec $SDIR/install.sh "$@"
 fi

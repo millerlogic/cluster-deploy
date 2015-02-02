@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ x"$1" != "x" ]; then
+	echo "DOCKER_OPTS=\"$1\"" >/etc/default/docker
+fi
+
 if ! command -v docker; then
 	apt-get install curl -y || echo
 	echo | curl -sSL https://get.docker.com/ | sh
